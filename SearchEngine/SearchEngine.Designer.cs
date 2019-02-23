@@ -31,6 +31,7 @@
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.metroLink2 = new MetroFramework.Controls.MetroLink();
+            this.metroLink3 = new MetroFramework.Controls.MetroLink();
             this.SuspendLayout();
             // 
             // metroTextBox1
@@ -49,7 +50,7 @@
             this.metroTextBox1.CustomButton.Visible = false;
             this.metroTextBox1.Lines = new string[] {
         "Search here"};
-            this.metroTextBox1.Location = new System.Drawing.Point(23, 63);
+            this.metroTextBox1.Location = new System.Drawing.Point(23, 84);
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
@@ -69,7 +70,7 @@
             // 
             this.metroLink1.BackColor = System.Drawing.Color.White;
             this.metroLink1.ForeColor = System.Drawing.Color.White;
-            this.metroLink1.Location = new System.Drawing.Point(255, 63);
+            this.metroLink1.Location = new System.Drawing.Point(255, 84);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(75, 23);
             this.metroLink1.TabIndex = 1;
@@ -79,7 +80,7 @@
             // 
             // metroLink2
             // 
-            this.metroLink2.Location = new System.Drawing.Point(-1, 5);
+            this.metroLink2.Location = new System.Drawing.Point(193, 6);
             this.metroLink2.Name = "metroLink2";
             this.metroLink2.Size = new System.Drawing.Size(75, 23);
             this.metroLink2.TabIndex = 2;
@@ -87,11 +88,22 @@
             this.metroLink2.UseSelectable = true;
             this.metroLink2.Click += new System.EventHandler(this.metroLink2_Click);
             // 
+            // metroLink3
+            // 
+            this.metroLink3.Location = new System.Drawing.Point(261, 6);
+            this.metroLink3.Name = "metroLink3";
+            this.metroLink3.Size = new System.Drawing.Size(75, 23);
+            this.metroLink3.TabIndex = 3;
+            this.metroLink3.Text = "Crawling";
+            this.metroLink3.UseSelectable = true;
+            this.metroLink3.Click += new System.EventHandler(this.metroLink3_Click);
+            // 
             // SearchEngine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 109);
+            this.ClientSize = new System.Drawing.Size(430, 228);
+            this.Controls.Add(this.metroLink3);
             this.Controls.Add(this.metroLink2);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.metroTextBox1);
@@ -110,6 +122,7 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroLink metroLink1;
         private MetroFramework.Controls.MetroLink metroLink2;
+        private MetroFramework.Controls.MetroLink metroLink3;
     }
 }
 

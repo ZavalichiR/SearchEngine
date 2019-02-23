@@ -11,11 +11,26 @@ using System.Windows.Forms;
 
 namespace SearchEngine
 {
+    /// <summary>
+    /// Modules of this application
+    /// </summary>
     public partial class Modules : MetroFramework.Forms.MetroForm
     {
         private List<HTMLObjects> HOs;
+
+        /// <summary>
+        /// Files from selected input folder
+        /// </summary>
         private string[] _files;
+
+        /// <summary>
+        /// Number of files founded
+        /// </summary>
         private int _filesCount;
+
+        /// <summary>
+        /// Constructor implicit
+        /// </summary>
         public Modules()
         {
             InitializeComponent();
@@ -23,15 +38,16 @@ namespace SearchEngine
             metroLink2.Enabled = false;
             metroLink3.Enabled = false;
             metroLink4.Enabled = false;
+            metroLink5.Enabled = false;
 
             metroProgressBar1.Visible = false;
             metroProgressBar1.Value = metroProgressBar1.Maximum;
-            metroLabel2.Visible = false;
 
-            metroProgressBar2.Visible = false;
-            metroProgressBar2.Value = metroProgressBar2.Maximum;
+            metroLabel2.Visible = false;
             metroLabel3.Visible = false;
+            metroLabel4.Visible = false;
         }
+
 
         /// <summary>
         /// Select input folder
@@ -39,24 +55,29 @@ namespace SearchEngine
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void metroLink1_Click(object sender, EventArgs e)
-        {
+        
+{
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
 
             string path = Application.StartupPath;
             for (int i = 1; i <= 3; ++i)
                 path = path.Substring(0, path.LastIndexOf('\\'));
-            path += "\\Data\\HTML files";
+            path += "\\Data\\HTML files"; // Set HTML files as default 
 
             fbd.SelectedPath = path;
+
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 metroTextBox1.Text = fbd.SelectedPath;
+
                 _files = Directory.GetFiles(fbd.SelectedPath);
                 _filesCount = _files.Length;
-                metroLabel1.Text = _files.Length.ToString() + " files selected";
+
+                metroLabel1.Text = _files.Length.ToString() + " selected files";
             }
 
+            // Parsing button is available only if exists files
             if (_filesCount == 0)
                 metroLink2.Enabled = false;
             else
@@ -67,6 +88,11 @@ namespace SearchEngine
 
         }
 
+        /// <summary>
+        /// Exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Modules_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -82,12 +108,22 @@ namespace SearchEngine
         {
             Parser parser = new Parser();
             metroLabel2.Visible = true;
+            metroLabel3.Visible = true;
+            metroLabel4.Visible = true;
+
             metroProgressBar1.Visible = true;
             metroProgressBar1.ForeColor = Color.Blue;
-            HOs = parser.DoParsing(_files, metroProgressBar1, metroLabel2, metroProgressBar2, metroLabel3);
+
+            metroLabel4.Text = " / " + _files.Count();
+            metroLabel4.Update();
+
+            HOs = parser.DoParsing(_files, metroProgressBar1, metroLabel2, metroLabel3, metroLabel4);
+
             metroLink2.Enabled = false;
             metroLink3.Enabled = true;
             metroLink4.Enabled = true;
+            metroLink4.Enabled = true;
+            metroLink5.Enabled = true;
         }
 
         /// <summary>
@@ -96,24 +132,37 @@ namespace SearchEngine
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void metroLink3_Click(object sender, EventArgs e)
-        {           
+        {
+            metroLabel2.Text = "0 / " + HOs.Count; ;
+            metroLabel2.Update();
+
             metroProgressBar1.Value = metroProgressBar1.Minimum;
             metroProgressBar1.Maximum = HOs.Count;
+
+            // Select folder for saving files
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
 
             string path = Application.StartupPath;
             for (int i = 1; i <= 3; ++i)
                 path = path.Substring(0, path.LastIndexOf('\\'));
-            path += "\\Data\\Parsed Files";
+            path += "\\Data\\Parsed Files"; // Select Parsed Files as default
 
             fbd.SelectedPath = path;
             if (fbd.ShowDialog() == DialogResult.OK)
                 path = fbd.SelectedPath;
+
+            int j = 0;
             foreach (var ho in HOs)
             {
+                metroLabel2.Text = (++j).ToString() + "/" + HOs.Count; ;
+                metroLabel2.Update();     
+                      
                 metroProgressBar1.Value += 1;
-                metroLabel2.Text = "Saving " + ho.Name;
+
+                metroLabel3.Text = "Saving " + ho.Name;
+                metroLabel3.Update();
+
                 using (System.IO.StreamWriter file =
                 new System.IO.StreamWriter(path + "\\" + ho.Name))
                     {                        
@@ -139,7 +188,8 @@ namespace SearchEngine
             }
 
             if (metroProgressBar1.Value == metroProgressBar1.Maximum)
-                metroLabel2.Text = "All files are saved";
+                metroLabel3.Text = "All files are saved";
+
             metroLink3.Enabled = false;
         }
 
@@ -157,6 +207,17 @@ namespace SearchEngine
             Show();
         }
 
-
+        /// <summary>
+        /// Show Hash Map
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroLink5_Click(object sender, EventArgs e)
+        {
+            Hide();
+            HMContent fc = new HMContent(HOs);
+            fc.ShowDialog();
+            Show();
+        }
     }
 }

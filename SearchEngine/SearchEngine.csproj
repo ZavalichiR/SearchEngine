@@ -68,6 +68,12 @@
     <Compile Include="FileContent.Designer.cs">
       <DependentUpon>FileContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="HMContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMContent.Designer.cs">
+      <DependentUpon>HMContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="HTMLObjects.cs" />
     <Compile Include="Modules.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FileContent.resx">
       <DependentUpon>FileContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HMContent.resx">
+      <DependentUpon>HMContent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules.resx">
       <DependentUpon>Modules.cs</DependentUpon>

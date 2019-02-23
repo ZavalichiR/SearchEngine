@@ -10,9 +10,17 @@ using System.Windows.Forms;
 
 namespace SearchEngine
 {
+    /// <summary>
+    /// Show content from HTMLObjects
+    /// </summary>
     public partial class FileContent : MetroFramework.Forms.MetroForm
     {
         private List<HTMLObjects> _hos;
+
+        /// <summary>
+        /// Copy Constructor
+        /// </summary>
+        /// <param name="hos"></param>
         public FileContent(List<HTMLObjects> hos)
         {
             InitializeComponent();
@@ -21,6 +29,11 @@ namespace SearchEngine
                 metroComboBox1.Items.Add(ho.Name);
         }
 
+        /// <summary>
+        /// Exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FileContent_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -28,6 +41,11 @@ namespace SearchEngine
                
         }
 
+        /// <summary>
+        /// Show information form selected object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (var ho in _hos)

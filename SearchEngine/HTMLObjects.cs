@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace SearchEngine
 {
+    /// <summary>
+    /// Contains the objects from HTML file
+    /// </summary>
     public class HTMLObjects
     {
-        public Dictionary<string, int> HashMap;
+        
+        public string BaseLinks;
         public string Name;
         public string Title;
         public string MetaDescription;
@@ -17,7 +21,11 @@ namespace SearchEngine
         public string ExternalLinks;
         public string InternalLinks;
         public string Text;
+        public Dictionary<string, int> HashMap;
 
+        /// <summary>
+        /// Implicit constructor
+        /// </summary>
         public HTMLObjects()
         {
             if (HashMap == null)
@@ -32,6 +40,19 @@ namespace SearchEngine
             InternalLinks = "";
             Text = "";
         }
+
+        /// <summary>
+        /// Explicit constructor
+        /// </summary>
+        /// <param name="name">File name</param>
+        /// <param name="title">HTML title</param>
+        /// <param name="md">HTML Meta description</param>
+        /// <param name="mk">HTML Meta Keywords</param>
+        /// <param name="mr">HTML Meta robots</param>
+        /// <param name="el">HTML External links</param>
+        /// <param name="il">HTML Internal Links</param>
+        /// <param name="text">HTML Body content</param>
+        /// <param name="bLink">(TODO) HTML Base Link</param>
         public HTMLObjects(string name, string title, string md, string mk, string mr, string el, string il, string text)
         {
             if (HashMap == null)
@@ -47,6 +68,10 @@ namespace SearchEngine
             Text = text;
         }
 
+        /// <summary>
+        /// Copy constructor
+        /// </summary>
+        /// <param name="ho">HTMLObjects</param>
         public HTMLObjects(HTMLObjects ho)
         {
             if (HashMap == null)
@@ -63,18 +88,34 @@ namespace SearchEngine
             HashMap = ho.HashMap;
         }
 
+        /// <summary>
+        /// Create Hash MAP for the HTML from this object
+        /// </summary>
         public void CreateHashMap()
         {
-            char[] separators = { ' ', '\n', '\r', '\t', ',', '.', '!', '?', '/', '\\', '\'', '\"', '(', ')', '[', ']', '{', '}',':',';'};
+            char[] separators = { ' ', '\n', '\r', '\t', ',', '.', '!',
+                                 '?', '/', '\\', '\'', '\"', '(', ')',
+                                 '[', ']', '{', '}',':',';'
+                                 ,'@', '#','$','%','^','&','*','<','>' };
+
             string word = "";
             for (int i = 0; i < Text.Length; ++i)
             {
                 if (!separators.Contains(Text[i]))
-                { 
+                {                    
                     word += Text[i];
                 }
                 else if(word.Length > 2 )
                 {
+                    int lineIndex = word.IndexOf('-');
+
+                    if (lineIndex == 0)
+                        word = word.Substring(1);
+
+                    lineIndex = word.LastIndexOf('-');
+                    if (lineIndex == word.Length - 1)
+                        word = word.Substring(0, lineIndex);
+
                     if (!HashMap.ContainsKey(word))
                         HashMap.Add(word, 1);
                     else
@@ -84,12 +125,45 @@ namespace SearchEngine
 
             }
         }
+
+        /// <summary>
+        /// Create a string with key--value from HashMap
+        /// </summary>
+        /// <returns>string</returns>
         public string ShowHashMap()
         {
             string hm = "";
             foreach (var item in HashMap)
             {
                 hm += item.Key + " -- " + item.Value + "\n";
+            }
+            return hm;
+        }
+
+        /// <summary>
+        /// Create a string with key from HashMap
+        /// </summary>
+        /// <returns>string</returns>
+        public string ShowHashMapKeys()
+        {
+            string hm = "";
+            foreach (var item in HashMap)
+            {
+                hm += item.Key + "\n";
+            }
+            return hm;
+        }
+
+        /// <summary>
+        /// Create a string with value from HashMap
+        /// </summary>
+        /// <returns>string</returns>
+        public string ShowHashMapValues()
+        {
+            string hm = "";
+            foreach (var item in HashMap)
+            {
+                hm += item.Value + "\n";
             }
             return hm;
         }
