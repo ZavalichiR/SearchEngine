@@ -1,0 +1,128 @@
+------TITLE
+
+(Not So) Basic Parser Tests
+
+------META
+
+-----------Description
+
+Your basic average HTML parser tests.
+
+-----------KeyWords
+
+HTML,parser,tests,basic
+
+-----------Robots
+
+noindex, nofollow
+
+------LINKS
+
+-----------External Links
+
+#
+
+-----------Internal Links
+
+http://riweb.tibeica.com/tests/l1_absolute
+http://riweb.tibeica.com/tests/l1_absolute?id=1
+http://riweb.tibeica.com/tests/l1_basic?id=1
+l1_relative1
+./l1_relative2
+../tests/l1_relative2
+l1_relative1?param
+http://riweb.tibeica.com/tests/l1_basic
+http://riweb.tibeica.com/tests/l1_basic#something
+./l1_basic
+../tests/l1_basic
+
+------BODY
+
+
+	
+		(Not So) Basic Parser Tests
+		
+		
+		
+	
+	
+		Just some text to extract properly.
+		Lorem Ipsum bla Bla bla.
+		How did this text get here?
+		 Some links:
+			OK1 link_absolute
+			OK2 link_absolute_parameters
+			OK3 link_absolute same_parameters
+			OK4 link_relative_1
+			OK5 link_relative_2
+			OK6 link_relative_3
+			OK7 link_relative_parameters
+		
+		 Some internal links:
+			NOK1 link_internal_absolute
+			NOK2 link_internal_absolute_with bookmark
+			NOK3 link_internal nothing
+			NOK4 link_internal_relative
+			NOK5 link_internal_relative_harder
+		
+		 Other tests:
+			
+		
+		
+	
+
+
+
+
+-------------------------------HASH MAP----------------------------------------
+
+Not -- 1
+SoBasic -- 1
+Parser -- 1
+Tests -- 1
+Just -- 1
+some -- 1
+text -- 2
+toextract -- 1
+properly -- 1
+Lorem -- 1
+Ipsum -- 1
+bla -- 2
+Bla -- 1
+How -- 1
+did -- 1
+this -- 1
+get -- 1
+here -- 1
+Some -- 2
+links -- 2
+OK1 -- 1
+link_absolute -- 2
+OK2 -- 1
+link_absolute_parameters -- 1
+OK3 -- 1
+same_parameters -- 1
+OK4 -- 1
+link_relative_1 -- 1
+OK5 -- 1
+link_relative_2 -- 1
+OK6 -- 1
+link_relative_3 -- 1
+OK7 -- 1
+link_relative_parameters -- 1
+internal -- 1
+NOK1 -- 1
+link_internal_absolute -- 1
+NOK2 -- 1
+link_internal_absolute_with -- 1
+bookmark -- 1
+NOK3 -- 1
+link_internal -- 1
+nothing -- 1
+NOK4 -- 1
+link_internal_relative -- 1
+NOK5 -- 1
+link_internal_relative_harder -- 1
+Other -- 1
+tests -- 1
+
