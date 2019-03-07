@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SearchEngine
 {
@@ -12,7 +13,7 @@ namespace SearchEngine
     public class HTMLObjects
     {
         
-        public string BaseLinks;
+        public string BaseLink;
         public string Name;
         public string Title;
         public string MetaDescription;
@@ -97,7 +98,7 @@ namespace SearchEngine
                                  '?', '/', '\\', '\'', '\"', '(', ')',
                                  '[', ']', '{', '}',':',';'
                                  ,'@', '#','$','%','^','&','*','<','>' };
-
+            
             string word = "";
             for (int i = 0; i < Text.Length; ++i)
             {
@@ -166,6 +167,39 @@ namespace SearchEngine
                 hm += item.Value + "\n";
             }
             return hm;
+        }
+
+        /// <summary>
+        /// Create a string with all value-key from HashMap for Direct Index
+        /// </summary>
+        /// <param name="exceptionWords"></param>
+        /// <param name="stopWords"></param>
+        public string ShowHashMapDirectIndex()
+        {
+            string hm = "["+Name+"]" + ":{ ";
+            foreach (var item in HashMap)
+            {
+                hm += item.Key + ":" + item.Value + ",";
+            }
+            hm += "}";
+            return hm;
+        }
+
+        /// <summary>
+        /// Remove stop words from Hash Map
+        /// Thw stop words are from StopWords.txt file
+        /// </summary>
+        /// <param name="exceptionWords"></param>
+        /// <param name="stopWords"></param>
+        public void removeStopWords(List<string> exceptionWords,List<string> stopWords)
+        {
+            List<string> stpW = stopWords.Except(exceptionWords).ToList();
+
+            foreach (var sW in stpW)
+            {
+                HashMap.Remove(sW);
+            }
+                
         }
     }   
 }

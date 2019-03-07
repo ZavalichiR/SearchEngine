@@ -12,8 +12,6 @@ namespace SearchEngine
     /// </summary>
     public partial class HMContent : MetroFramework.Forms.MetroForm
     {
-
-        public event EventHandler VScroll;
         public enum ScrollBarType : uint
         {
             SbHorz = 0,
@@ -37,9 +35,7 @@ namespace SearchEngine
 
         [DllImport("User32.dll")]
         public extern static int SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
-
         
-
         private List<HTMLObjects> _hos;
         public HMContent(List<HTMLObjects> hos)
         {

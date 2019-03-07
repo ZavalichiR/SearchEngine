@@ -30,6 +30,8 @@
         {
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLink5 = new MetroFramework.Controls.MetroLink();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLink4 = new MetroFramework.Controls.MetroLink();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLink3 = new MetroFramework.Controls.MetroLink();
@@ -40,19 +42,18 @@
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLink5 = new MetroFramework.Controls.MetroLink();
+            this.metroLink6 = new MetroFramework.Controls.MetroLink();
+            this.metroLink7 = new MetroFramework.Controls.MetroLink();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
-            this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Location = new System.Drawing.Point(32, 62);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
@@ -86,6 +87,26 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // metroLink5
+            // 
+            this.metroLink5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.metroLink5.Location = new System.Drawing.Point(270, 227);
+            this.metroLink5.Name = "metroLink5";
+            this.metroLink5.Size = new System.Drawing.Size(78, 33);
+            this.metroLink5.TabIndex = 13;
+            this.metroLink5.Text = "Hash Maps";
+            this.metroLink5.UseSelectable = true;
+            this.metroLink5.Click += new System.EventHandler(this.metroLink5_Click);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(84, 180);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(43, 19);
+            this.metroLabel4.TabIndex = 12;
+            this.metroLabel4.Text = "Status";
+            // 
             // metroLink4
             // 
             this.metroLink4.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -109,11 +130,11 @@
             // metroLink3
             // 
             this.metroLink3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroLink3.Location = new System.Drawing.Point(84, 96);
+            this.metroLink3.Location = new System.Drawing.Point(209, 96);
             this.metroLink3.Name = "metroLink3";
-            this.metroLink3.Size = new System.Drawing.Size(78, 33);
+            this.metroLink3.Size = new System.Drawing.Size(127, 33);
             this.metroLink3.TabIndex = 8;
-            this.metroLink3.Text = "Save Files";
+            this.metroLink3.Text = "Save HTML content";
             this.metroLink3.UseSelectable = true;
             this.metroLink3.Click += new System.EventHandler(this.metroLink3_Click);
             // 
@@ -137,7 +158,7 @@
             // metroLink2
             // 
             this.metroLink2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroLink2.Location = new System.Drawing.Point(-4, 96);
+            this.metroLink2.Location = new System.Drawing.Point(-24, 96);
             this.metroLink2.Name = "metroLink2";
             this.metroLink2.Size = new System.Drawing.Size(93, 33);
             this.metroLink2.TabIndex = 5;
@@ -198,6 +219,8 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.metroLink7);
+            this.metroTabPage2.Controls.Add(this.metroLink6);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -205,44 +228,32 @@
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(344, 260);
             this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Tab2";
+            this.metroTabPage2.Text = "Indexing";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // metroTabPage3
+            // metroLink6
             // 
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(344, 260);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "Tab3";
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.VerticalScrollbarSize = 10;
+            this.metroLink6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.metroLink6.Location = new System.Drawing.Point(3, 27);
+            this.metroLink6.Name = "metroLink6";
+            this.metroLink6.Size = new System.Drawing.Size(108, 33);
+            this.metroLink6.TabIndex = 6;
+            this.metroLink6.Text = "Direct indexing";
+            this.metroLink6.UseSelectable = true;
+            this.metroLink6.Click += new System.EventHandler(this.metroLink6_Click);
             // 
-            // metroLabel4
+            // metroLink7
             // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(84, 180);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(43, 19);
-            this.metroLabel4.TabIndex = 12;
-            this.metroLabel4.Text = "Status";
-            // 
-            // metroLink5
-            // 
-            this.metroLink5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroLink5.Location = new System.Drawing.Point(270, 227);
-            this.metroLink5.Name = "metroLink5";
-            this.metroLink5.Size = new System.Drawing.Size(78, 33);
-            this.metroLink5.TabIndex = 13;
-            this.metroLink5.Text = "Hash Maps";
-            this.metroLink5.UseSelectable = true;
-            this.metroLink5.Click += new System.EventHandler(this.metroLink5_Click);
+            this.metroLink7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.metroLink7.Location = new System.Drawing.Point(224, 27);
+            this.metroLink7.Name = "metroLink7";
+            this.metroLink7.Size = new System.Drawing.Size(108, 33);
+            this.metroLink7.TabIndex = 7;
+            this.metroLink7.Text = "Indirect Indexing";
+            this.metroLink7.UseSelectable = true;
+            this.metroLink7.Click += new System.EventHandler(this.metroLink7_Click);
             // 
             // Modules
             // 
@@ -257,6 +268,7 @@
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
+            this.metroTabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -266,7 +278,6 @@
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
-        private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroLink metroLink1;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
@@ -279,5 +290,7 @@
         private MetroFramework.Controls.MetroLink metroLink3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLink metroLink5;
+        private MetroFramework.Controls.MetroLink metroLink7;
+        private MetroFramework.Controls.MetroLink metroLink6;
     }
 }

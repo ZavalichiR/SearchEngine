@@ -75,6 +75,7 @@
       <DependentUpon>HMContent.cs</DependentUpon>
     </Compile>
     <Compile Include="HTMLObjects.cs" />
+    <Compile Include="Indexing.cs" />
     <Compile Include="Modules.cs">
       <SubType>Form</SubType>
     </Compile>

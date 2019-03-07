@@ -52,6 +52,7 @@ namespace SearchEngine
         {
             MetroFramework.MetroMessageBox.Show(this, "", "This module is not available yet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         /// <summary>
         /// Exit
         /// </summary>

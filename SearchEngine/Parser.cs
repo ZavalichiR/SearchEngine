@@ -32,7 +32,7 @@ namespace SearchEngine
         /// <param name="status2">name of the current file</param>
         /// <param name="status2">status of processing file</param>
         /// <returns></returns>
-        public List<HTMLObjects> DoParsing(string[] files, MetroProgressBar progressBar1, MetroLabel status1, MetroLabel status2, MetroLabel status3)
+        public List<HTMLObjects> DoParsing(List<string> files, MetroProgressBar progressBar1, MetroLabel status1, MetroLabel status2, MetroLabel status3)
         {
             _progressBar1 = progressBar1;
             _progressBar1.Value = progressBar1.Minimum;
@@ -53,6 +53,7 @@ namespace SearchEngine
                           
                 _ho = new HTMLObjects();
                 _ho.Name = file.Substring(file.LastIndexOf("\\"));
+                _ho.Name = _ho.Name.Trim('\\');
 
                 _status2.Text = _ho.Name;
                 _status2.Update();
@@ -86,7 +87,6 @@ namespace SearchEngine
                 _status2.Text = "Parsing Done !";
                 _status3.Text = "";
             }
-                
                 
         }
 
