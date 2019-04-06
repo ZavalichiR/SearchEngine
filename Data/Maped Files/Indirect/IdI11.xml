@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IndirectIndex>
+  <Word name="nuare">
+    <key-value counter="1" file="file3.txt" />
+  </Word>
+  <Word name="nimic">
+    <key-value counter="1" file="file3.txt" />
+  </Word>
+  <Word name="Just">
+    <key-value counter="1" file="file.txt" />
+  </Word>
+  <Word name="some">
+    <key-value counter="1" file="file.txt" />
+  </Word>
+  <Word name="toextract">
+    <key-value counter="1" file="file.txt" />
+  </Word>
+</IndirectIndex>

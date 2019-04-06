@@ -43,7 +43,7 @@ namespace SearchEngine
             metroLink4.Enabled = false;
             metroLink5.Enabled = false;
             metroLink6.Enabled = false;
-            metroLink7.Enabled = false;
+            //metroLink7.Enabled = false;
 
             metroProgressBar1.Visible = false;
             metroProgressBar1.Value = metroProgressBar1.Maximum;
@@ -59,7 +59,6 @@ namespace SearchEngine
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void metroLink1_Click(object sender, EventArgs e)
-
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
@@ -91,7 +90,6 @@ namespace SearchEngine
                 metroLink2.ForeColor = Color.Green;
                 metroLink2.Enabled = true;
             }
-
         }
 
         /// <summary>
@@ -334,7 +332,7 @@ namespace SearchEngine
             foreach (var file in Directory.GetFiles(path).ToList())
                 File.Delete(file);
 
-            Indexing.DirectIndex(path, HOs);         
+            Indexing.DirectIndex2(path, HOs);         
         }
 
         /// <summary>
@@ -355,10 +353,46 @@ namespace SearchEngine
             foreach (var file in Directory.GetFiles(IdIpath).ToList())
                 File.Delete(file);
 
-            Indexing.IndirectIndex(DIpath, IdIpath);
-
-           
+            Indexing.IndirectIndex2(DIpath, IdIpath);          
         }
 
+        /// <summary>
+        /// Boolean searching
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            List<string> result = new List<string>();
+            Search s = new Search();
+            s.query = metroTextBox2.Text;
+            result = s.BooleanSearch();
+            richTextBox1.Clear();
+            foreach (var r in result)
+            {
+                richTextBox1.Text += r + "\n";
+            }
+        }
+
+        /// <summary>
+        /// Vectorial searching
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            Search s = new Search();
+            s.query = metroTextBox3.Text;
+            s.ComputeQuery();
+
+            var result = s.ComputeSimilarity();
+
+            richTextBox2.Clear();
+            foreach (var r in result)
+            {
+                richTextBox2.Text += r.Key +  " " + r.Value + "\n";
+            }
+
+        }
     }
 }

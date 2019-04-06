@@ -15,9 +15,11 @@ namespace SearchEngine
     /// </summary>
     public partial class SearchEngine : MetroFramework.Forms.MetroForm
     {
+        private Search _search;
         public SearchEngine()
         {
             InitializeComponent();
+            _search = new Search();
         }
 
         /// <summary>
@@ -27,7 +29,37 @@ namespace SearchEngine
         /// <param name="e"></param>
         private void metroLink1_Click(object sender, EventArgs e)
         {
-            MetroFramework.MetroMessageBox.Show(this, "", "This module is not available yet!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (comboBox1.SelectedItem == null)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "", "Select the type of searching", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var option = comboBox1.SelectedItem.ToString();
+
+            _search.query = metroTextBox1.Text;
+
+            switch (option)
+            {
+                case "Vectorial":                                     
+                    _search.ComputeQuery();
+                    var boolResult = _search.ComputeSimilarity();
+                    richTextBox1.Clear();
+                    foreach (var r in boolResult)
+                        richTextBox1.Text += r.Key + " " + r.Value + "\n";
+                    break;
+
+                case "Boolean":                 
+                    var vectorialResult = _search.BooleanSearch();
+                    richTextBox1.Clear();
+                    foreach (var r in vectorialResult)
+                        richTextBox1.Text += r + "\n";
+                    break;
+                default:
+                    break;
+            }
+
+
         }
 
         /// <summary>
@@ -54,6 +86,19 @@ namespace SearchEngine
         }
 
         /// <summary>
+        /// Indexing application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroLink4_Click(object sender, EventArgs e)
+        {
+            Hide();
+            IndexingPacket ip = new IndexingPacket();
+            ip.ShowDialog();
+            Show();
+        }
+
+        /// <summary>
         /// Exit
         /// </summary>
         /// <param name="sender"></param>
@@ -64,6 +109,6 @@ namespace SearchEngine
                 Application.Exit();
         }
 
-        
+
     }
 }
