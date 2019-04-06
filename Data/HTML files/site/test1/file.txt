@@ -9,6 +9,7 @@
 		Just some text to <b>extract</b> properly.
 		Ana are mere
 		<p>Lorem Ipsum bla Bla bla.</p>
+		jump, jumping, jumps, jumped
 		<span style="display:none;">How did this text get here?</span>
 		<ul> Some links:
 			<li><a href="http://riweb.tibeica.com/tests/l1_absolute">OK1 link_absolute</a></li>

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Iveonik;
+using Iveonik.Stemmers;
 
 namespace SearchEngine
 {
@@ -94,6 +92,7 @@ namespace SearchEngine
         /// </summary>
         public void CreateHashMap()
         {
+            EnglishStemmer es = new EnglishStemmer();
             char[] separators = { ' ', '\n', '\r', '\t', ',', '.', '!',
                                  '?', '/', '\\', '\'', '\"', '(', ')',
                                  '[', ']', '{', '}',':',';'
@@ -116,6 +115,8 @@ namespace SearchEngine
                     lineIndex = word.LastIndexOf('-');
                     if (lineIndex == word.Length - 1)
                         word = word.Substring(0, lineIndex);
+
+                    word = es.Stem(word);
 
                     if (!HashMap.ContainsKey(word))
                         HashMap.Add(word, 1);
